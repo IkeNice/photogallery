@@ -1,5 +1,5 @@
 <?php
-
+/*
 function get_images($dir){
 	$f = opendir($dir);
 	while(false !== ($file = readdir($f))){
@@ -8,11 +8,16 @@ function get_images($dir){
 	}
 	return $files;
 }
-
-// function get_images($dir){
-//     $files = scandir($dir);
-//     unset($files[0], $files[1]);
-//     return $files;
-//}
+*/
+function get_images($dir){
+	@$files = scandir($dir);
+	$pattern ="#\.(jpe?g|png)$#i";
+	foreach($files as $key => $file){
+		if(!preg_match($pattern, $file)){
+			unset($files[$key]);
+		}
+	}
+    return $files;
+}
 
 ?>

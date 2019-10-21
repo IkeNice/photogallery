@@ -15,21 +15,24 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/lightbox.css">
 </head>
+
 <body>
+    <h1 align="center">Welcome to my Gallery!</h1>
     <div class="wrapper">
         <div class="gallery">
 
             <!-- ВЫВОД КАРТИНОК В ЦИКЛЕ -->
-            <?php if($images): ?>
+            <?php if($images): $i = 1?>
                 <?php foreach($images as $image): ?>
                     <div class="item">
                         <div>
                             <a  data-lightbox="lightbox" href="<?= $bdir . $image ?>">
                                 <img class="front" src="<?= $dir . $image ?>" alt="">
+                                <span class="back">Фото <?=$i?></span>
                             </a>
                         </div>
                     </div>
-                <?php endforeach; ?>
+                <?php $i++; endforeach; ?>
             <?php else: ?>
                 <p>В данной галерее нет картинок</p>
             <?php endif; ?>
