@@ -23,7 +23,20 @@
     }else{
         $page = 1;
     }
-//---------- ----------//
+    // если запрашиваемая страница больше максимума
+    if ($page > $count_pages)
+        $page = $count_pages;
+    // номер первой картинки на страницу
+    $start_pos = ($page - 1) * $perpage;
+    // номер последней картинки на страницу 
+    $end_pos = $start_pos + $perpage;
+    // если номер последней картинки больше числа всех картинок
+    if($end_pos > $count_img)
+        $end_pos = $count_img;
+
+    // получаем пагинацию
+    $pagination = pagination($page, $count_pages)
+//--------------------//
 
 ?>
 
@@ -52,8 +65,8 @@
     <div class="wrapper">
         <div class="gallery">
             <!-- ВЫВОД КАРТИНОК В ЦИКЛЕ -->
-            <!-- <?php if($images): $i = 1?>
-                <?php foreach($images as $image): ?>
+            <!-- <?php //if($images): $i = 1?>
+                <?php //foreach($images as $image): ?>
                     <div class="item">
                         <div>
                             <a  data-lightbox="lightbox" href="<?= $bdir . $image ?>">
@@ -62,15 +75,14 @@
                             </a>
                         </div>
                     </div>
-                <?php $i++; endforeach; ?>
-            <?php else: ?>
+                <?php //$i++; endforeach; ?>
+            <?php //else: ?>
                 <p>В данной галерее нет картинок</p>
-            <?php endif; ?> -->
+            <?php //endif; ?> -->
 
             <!-- ДЛЯ ПАГИНАЦИИ -->
-            <?php // echo "<pre>" .print_r($images, true). "</pre>" ?>
-            <?php if($images): $i = 1?>
-            <?php for($j = 0; $j < 6; $j++): ?>
+            <?php if($images): $i = $start_pos + 1?>
+            <?php for($j = $start_pos; $j < $end_pos; $j++): ?>
                 <div class="item">
                     <div>
                         <a  data-lightbox="lightbox" href="<?= $bdir . $images[$j] ?>">
@@ -80,9 +92,16 @@
                     </div>
                 </div>
             <?php $i++; endfor; ?>
-        <?php else: ?>
-            <p>В данной галерее нет картинок</p>
-        <?php endif; ?>
+            <?php else: ?>
+                <p>В данной галерее нет картинок</p>
+            <?php endif; ?>
+            <!--  -->
+            <div class="clear">
+            <?php if($count_pages > 1): ?>
+                <div class="pagination"><?=$pagination?></div>
+            <?php endif; ?>
+            </div>
+
         </div>
     </div>
 
