@@ -1,11 +1,20 @@
 <?php
   
+    require_once 'config.php';
     include 'functions.php';
+
+    $gallery = isset($_GET['gallery']) ? (int)$_GET['gallery'] : 1;
+    if($gallery < 1)
+        $gallery = 1;
+
     $dir = 'img/small/';
     $bdir = 'img/big/';
-    $images = get_images($dir);
+    // $images = get_images($dir); 
     require_once 'pagination.php';
+    $images = get_images_db($gallery);
 
+    	
+print_r($images);
 ?>
 
 <!doctype html>
@@ -13,8 +22,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Gallery</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" href="css/lightbox.css">
+    <link rel="stylesheet" type="text/css" href="<?=SITE?>css/style.css">
+    <link rel="stylesheet" href="<?=SITE?>css/lightbox.css">
 </head>
 
 <body background="main_bg.jpg">
@@ -53,8 +62,8 @@
             <?php for($j = $start_pos; $j < $end_pos; $j++): ?>
                 <div class="item">
                     <div>
-                        <a  data-lightbox="lightbox" href="<?= $bdir . $images[$j] ?>">
-                            <img class="front" src="<?= $dir . $images[$j] ?>" alt="">
+                        <a  data-lightbox="lightbox" href="<?=SITE . $bdir . $images[$j] ?>">
+                            <img class="front" src="<?=SITE . $dir . $images[$j] ?>" alt="">
                             <span class="back">Фото <?=$i?></span>
                         </a>
                     </div>
@@ -74,7 +83,7 @@
     </div>
 
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-<script src="js/lightbox.min.js"></script>
-<script src="js/script.js"></script>
+<script src="<?=SITE?>js/lightbox.min.js"></script>
+<!-- <script src="js/script.js"></script> -->
 </body>
 </html>

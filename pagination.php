@@ -1,7 +1,7 @@
 <?php
 //----------- пагинация -----------//
     // фото на страницу
-    $perpage = 3;
+    $perpage = 9;
     // общее количество фото
     $count_img = count($images);
     // необходимое число страниц
@@ -29,4 +29,4 @@
         $end_pos = $count_img;
 
     // получаем пагинацию
-    $pagination = pagination($page, $count_pages);
+    $pagination = pagination($page, $count_pages, $modrew = 1);

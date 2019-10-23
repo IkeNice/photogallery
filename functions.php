@@ -10,6 +10,12 @@ function get_images($dir){
 	return $files;
 }
 */
+
+
+   /**
+	* получение картинок из каталога 
+	**/
+
 function get_images($dir){
 	@$files = scandir($dir);
 	if(!$files) 
@@ -24,7 +30,6 @@ function get_images($dir){
     return $files;
 }
 
-// ПАГИНАЦИЯ
 /**
 * Постраничная навигация
 **/
@@ -86,4 +91,18 @@ function pagination($page, $count_pages, $modrew = false){
 	return $startpage.$back.$page2left.$page1left.'<a class="nav-active">'.$page.'</a>'.$page1right.$page2right.$forward.$endpage;
    }
 
+   /**
+	* получение картинок из БД 
+    **/
+   	function get_images_db($gallery){
+		global $db;
+		$query = "SELECT id, img, description FROM images WHERE gallery_id = $gallery ORDER BY id ASC";
+		$res = mysqli_query($db, $query);
+		$images = array();
+		while($row = mysqli_fetch_assoc($res)){
+			$images[$row['id']] = $row;
+		}
+		return $images;
+	}
+ 
 ?>
