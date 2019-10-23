@@ -94,9 +94,9 @@ function pagination($page, $count_pages, $modrew = false){
    /**
 	* получение картинок из БД 
     **/
-   	function get_images_db($gallery){
+   	function get_images_db($gallery, $start_pos, $perpage){
 		global $db;
-		$query = "SELECT id, img, description FROM images WHERE gallery_id = $gallery ORDER BY id ASC";
+		$query = "SELECT id, img, description FROM images WHERE gallery_id = $gallery ORDER BY id ASC LIMIT $start_pos, $perpage";
 		$res = mysqli_query($db, $query);
 		$images = array();
 		while($row = mysqli_fetch_assoc($res)){
@@ -104,5 +104,27 @@ function pagination($page, $count_pages, $modrew = false){
 		}
 		return $images;
 	}
- 
+	/**
+	 * получение всех картинок из базы 
+	**/
+	function get_all_images_db($gallery){
+		global $db;
+		$query = "SELECT id, img, description FROM images";
+		$res = mysqli_query($db, $query);
+		$images = array();
+		while($row = mysqli_fetch_assoc($res)){
+			$images[$row['id']] = $row;
+		}
+		return $images;
+	}
+ 	/**
+  	* количество картинок галереи 
+	**/
+  	function count_images($gallery){
+		global $db;
+		$query = "SELECT COUNT(*) FROM images WHERE gallery_id = $gallery";
+		$res = mysqli_query($db, $query);
+		$row = mysqli_fetch_row($res);
+		return $row[0];
+  	}	
 ?>

@@ -42,8 +42,8 @@ CREATE TABLE IF NOT EXISTS `images` (
 INSERT INTO `images` (`id`, `gallery_id`, `img`, `description`) VALUES
 (1, 1, '01.jpg', 'Описание фото 1'),
 (2, 1, '02.jpg', 'Описание фото 2'),
-(3, 1, '03.jpg', 'Описание фото 3'),
-(4, 1, '04.jpg', 'Описание фото 4'),
+(3, 1, '03.png', 'Описание фото 3'),
+(4, 1, '04.png', 'Описание фото 4'),
 (5, 1, '05.jpg', 'Описание фото 5'),
 (6, 1, '06.jpg', 'Описание фото 6'),
 (7, 2, '07.jpg', 'Описание фото 7'),
@@ -55,8 +55,8 @@ INSERT INTO `images` (`id`, `gallery_id`, `img`, `description`) VALUES
 (13, 1, '13.jpg', 'Описание фото 13'),
 (14, 1, '14.jpg', 'Описание фото 14'),
 (15, 1, '15.jpg', 'Описание фото 15'),
-(16, 1, '16.png', 'Описание фото 16'),
-(17, 1, '17.gif', 'Описание фото 17');
+(16, 1, '16.jpg', 'Описание фото 16'),
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

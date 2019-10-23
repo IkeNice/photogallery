@@ -3,7 +3,8 @@
     // фото на страницу
     $perpage = 9;
     // общее количество фото
-    $count_img = count($images);
+    // $count_img = count($images);
+    $count_img = count_images($gallery);
     // необходимое число страниц
     $count_pages = ceil($count_img / $perpage);
     // если число страниц равно 0
@@ -27,6 +28,5 @@
     // если номер последней картинки больше числа всех картинок
     if($end_pos > $count_img)
         $end_pos = $count_img;
-
     // получаем пагинацию
     $pagination = pagination($page, $count_pages, $modrew = 1);
