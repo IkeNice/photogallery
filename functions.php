@@ -12,10 +12,9 @@ function get_images($dir){
 */
 
 
-   /**
-	* получение картинок из каталога 
-	**/
-
+/**
+* получение картинок из каталога 
+**/
 function get_images($dir){
 	@$files = scandir($dir);
 	if(!$files) 
@@ -107,9 +106,9 @@ function pagination($page, $count_pages, $modrew = false){
 	/**
 	 * получение всех картинок из базы 
 	**/
-	function get_all_images_db($gallery){
+	function get_all_images_db($gallery, $start_pos, $perpage){
 		global $db;
-		$query = "SELECT id, img, description FROM images";
+		$query = "SELECT id, img, description FROM images LIMIT $start_pos, $perpage";
 		$res = mysqli_query($db, $query);
 		$images = array();
 		while($row = mysqli_fetch_assoc($res)){
