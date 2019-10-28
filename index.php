@@ -116,7 +116,7 @@
 
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="<?=SITE?>js/lightbox.min.js"></script>
-<!-- <script>var gallery = <?=$gallery?>;</script> -->
-<!-- <script src="js/script.js"></script> -->
+<script>var gallery = <?=$gallery?>;</script>
+<script src="js/script.js"></script>
 </body>
 </html>

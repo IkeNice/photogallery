@@ -20,7 +20,7 @@ require_once 'pagination.php';
 $dir = 'img/small/';
 $bdir = 'img/big/';
 
-$images = get_images_db($gallery, $start_pos, $perpage);
+$images = get_all_images_db($gallery, $start_pos, $perpage);
 //
 
 // формирование + вывод без бд
