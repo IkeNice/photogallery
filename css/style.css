@@ -47,12 +47,43 @@ table {
 	border-spacing: 0;
 }
 
+/*========== HEADER ==========*/
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+  
+li {
+    float: left;
+    color: white;
+}
+  
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    cursor: default;
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+  
+.active {
+    background-color: #4CAF50;
+}
+/*==============================*/
 .category-wrap {
     margin:20px 100px auto 100px;
     padding: 15px;
     background: white;
     width: 150px;
-    box-shadow: 2px 2px 8px rgba(0,0,0,.1);
+    box-shadow: 2px 2px 8px rgba(100, 87, 87, 0.1);
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     float: left;
 }

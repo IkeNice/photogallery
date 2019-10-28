@@ -27,8 +27,17 @@
     <link rel="stylesheet" href="<?=SITE?>css/lightbox.css">
 </head>
 
+<header>
+    <ul>
+        <li class="cursoron"><a>Welcome to my Gallery!</a></li>
+        <li style="float:right"><a href="#">Login</a></li>
+        <li style="float:right"><a href="#">Admin</a></li>
+        <li style="float:right"><a href="#" class="active">Home</a></li>
+    </ul>
+</header>
+
 <body background="main_bg.jpg">
-    <h1 align="center">Welcome to my Gallery!</h1>
+    <!-- <h1 align="center">Welcome to my Gallery!</h1> -->
 
     <!-- БОКОВОЕ МЕНЮ -->
     <!-- <div class="category-wrap">

@@ -2,6 +2,8 @@ $(document).ready(function(){
     
     $('.gallery').on('click', 'a.nav-link', function(e){       
         e.preventDefault();        
+        // console.log(gallery);
+        
         var page = $(this).data('page'); 
         $.ajax({
             url: 'pagination_ajax.php',
