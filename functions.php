@@ -91,7 +91,7 @@ function pagination($page, $count_pages, $modrew = false){
    }
 
    /**
-	* получение картинок из БД 
+	* получение картинок из БД для определенной галереи
     **/
    	function get_images_db($gallery, $start_pos, $perpage){
 		global $db;
@@ -117,13 +117,25 @@ function pagination($page, $count_pages, $modrew = false){
 		return $images;
 	}
  	/**
-  	* количество картинок галереи 
+  	* количество картинок определнной галереи 
 	**/
   	function count_images($gallery){
 		global $db;
 		$query = "SELECT COUNT(*) FROM images WHERE gallery_id = $gallery";
 		$res = mysqli_query($db, $query);
 		$row = mysqli_fetch_row($res);
+		// print_r($row);
+		return $row[0];
+	}	
+	/**
+	* количество всех картинок в галерее 
+	**/
+	function count_all_images($gallery){
+		global $db;
+		$query = "SELECT COUNT(*) FROM images ";
+		$res = mysqli_query($db, $query);
+		$row = mysqli_fetch_row($res);
+		// print_r($row);
 		return $row[0];
   	}	
 ?>

@@ -8,6 +8,8 @@
 -- Версия PHP: 5.2.17
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -33,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `images` (
   `description` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `gallery_id` (`gallery_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=18 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8  ;
 
 --
 -- Дамп данных таблицы `images`
@@ -56,6 +58,26 @@ INSERT INTO `images` (`id`, `gallery_id`, `img`, `description`) VALUES
 (14, 1, '14.jpg', 'Описание фото 14'),
 (15, 1, '15.jpg', 'Описание фото 15'),
 (16, 1, '16.jpg', 'Описание фото 16'),
+(17, 2, '17.jpg', 'Описание фото 17'),
+(18, 1, '18.jpeg', 'Описание фото 18'),
+(19, 1, '19.jpg', 'Описание фото 19'),
+(20, 1, '20.jpg', 'Описание фото 20'),
+(21, 2, '21.jpg', 'Описание фото 21'),
+(22, 1, '22.jpg', 'Описание фото 22'),
+(23, 1, '23.jpg', 'Описание фото 23'),
+(24, 2, '24.jpg', 'Описание фото 24'),
+(25, 2, '25.jpg', 'Описание фото 25'),
+(26, 1, '26.jpg', 'Описание фото 26'),
+(27, 2, '27.jpg', 'Описание фото 27'),
+(28, 1, '28.jpg', 'Описание фото 28'),
+(29, 1, '29.jpg', 'Описание фото 29'),
+(30, 2, '30.jpg', 'Описание фото 30'),
+(31, 2, '31.jpg', 'Описание фото 31'),
+(32, 1, '32.jpg', 'Описание фото 32'),
+(33, 2, '33.jpg', 'Описание фото 33'),
+(34, 1, '34.jpg', 'Описание фото 34'),
+(35, 1, '35.jpg', 'Описание фото 35'),
+(36, 2, '36.jpg', 'Описание фото 36')
 
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

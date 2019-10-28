@@ -4,7 +4,7 @@
     $perpage = 9;
     // общее количество фото
     // $count_img = count($images);
-    $count_img = count_images($gallery);
+    $count_img = count_all_images($gallery);
     // необходимое число страниц
     $count_pages = ceil($count_img / $perpage);
     // если число страниц равно 0
