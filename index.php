@@ -1,5 +1,4 @@
 <?php
-  
     require_once 'config.php';
     include 'functions.php';
 
@@ -14,7 +13,6 @@
     // $images = get_images($dir); 
     // $images = get_images_db($gallery, $start_pos, $perpage);
     $images = get_all_images_db($gallery, $start_pos, $perpage);
-
 ?>
 
 <!doctype html>
@@ -26,6 +24,8 @@
     <link rel="stylesheet" href="<?=SITE?>css/lightbox.css">
 </head>
 
+<body background="main_bg.jpg">
+    
 <header>
     <ul>
         <li class="cursoron"><a>Welcome to my Gallery!</a></li>
@@ -37,7 +37,6 @@
     </ul>
 </header>
 
-<body background="main_bg.jpg">
     <!-- <h1 align="center">Welcome to my Gallery!</h1> -->
 
     <!-- БОКОВОЕ МЕНЮ -->
@@ -50,7 +49,6 @@
         </ul>
     </div> -->
     <!--  -->
-    
     <div class="wrapper">
         <div class="gallery">
 

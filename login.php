@@ -29,8 +29,8 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <!-- <link rel="stylesheet" href="css/stylelogin.css"> -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="css/loginstyle.css">
 </head>
 <body background="main_bg.jpg">
@@ -56,10 +56,10 @@
                 <?php  if(isset($fmsg)){ ?><div class="alert alert-danger" role="alert"> <?php echo $fmsg; ?> </div><?php }?>
 
                 <div>
-                    <input type="text" name="user_login" class="form-control" placeholder="Username" required="">
+                    <input type="text" name="user_login" placeholder="Username" required="">
                 </div>
                 <div>
-                    <input type="password" name="user_password" class="form-control" placeholder="Passsword" required="">
+                    <input type="password" name="user_password" placeholder="Passsword" required="">
                 </div>
                 <div>
                     <input type="submit" value="Log in" />
