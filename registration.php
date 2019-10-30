@@ -14,7 +14,7 @@
         $email = $_POST['email'];
         $password = $_POST['password'];
         
-        $query = "INSERT INTO users (username, password, email) VALUES ('$username', '$password', '$email')";
+        $query = "INSERT INTO users (user_login, user_password, email) VALUES ('$username', '$password', '$email')";
         $result = mysqli_query($db, $query);
         
         if($result){
@@ -62,14 +62,16 @@
                 <div>
                     <input type="password" name="password" class="form-control" placeholder="Passsword" required>
                 </div>
+
                 <div>
                     <input type="submit" value="Register" />
                     <a href="<?=SITE?>">Return home</a>
                     <a href="login.php" class="log">Login</a>
                 </div>
-            </form><!-- form -->
-	        </section><!-- content -->
-    </div><!-- container -->
+                
+            </form>
+	        </section>
+    </div>
 
     </body>
 </html>

@@ -1,5 +1,29 @@
 <?php
-  require_once 'config.php';
+    session_start();
+    require('config.php');
+    if(isset($_POST['user_login']) and isset($_POST['user_password'])){
+        $username = $_POST['user_login'];
+        $password = $_POST['user_password'];
+  
+        $query = "SELECT * FROM users WHERE `user_login`='$username' and `user_password` ='$password'";
+        $result = mysqli_query($db, $query) or die(mysqli_error($db));
+        $count = mysqli_num_rows($result);
+        // print_r($count);
+        if($count == 1){
+            $_SESSION['user_login'] = $username;
+        } else {
+            $fmsg = "Данные введены не правильно.";
+        }
+    }
+    if(isset($_SESSION['user_login'])){
+        $username = $_SESSION['user_login'];
+        // echo "Hello, " . $username . "!";
+        // echo "Login successful!";
+        header("Location: ".SITE);        
+    } else {
+        //  $fmsg = "Ошибка входа!"; 
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,47 +50,27 @@
 
     <div class="container">
         <section id="content">
-            <form action="<?=SITE?>" method="POST">
+            <form  method="POST" >
                 <h1>Login Form</h1>
+
+                <?php  if(isset($fmsg)){ ?><div class="alert alert-danger" role="alert"> <?php echo $fmsg; ?> </div><?php }?>
+
                 <div>
-                    <input type="text" placeholder="Username" required="" id="username" />
+                    <input type="text" name="user_login" class="form-control" placeholder="Username" required="">
                 </div>
                 <div>
-                    <input type="password" placeholder="Password" required="" id="password" />
+                    <input type="password" name="user_password" class="form-control" placeholder="Passsword" required="">
                 </div>
                 <div>
                     <input type="submit" value="Log in" />
                     <a href="<?=SITE?>">Return home</a>
                     <a href="registration.php">Register</a>
                 </div>
-            </form><!-- form -->	
-        </section><!-- content -->
-    </div><!-- container -->
+            </form>	
+        </section>
+    </div>
 
-<?php
-@session_start();
-    require_once 'config.php';
-    if(isset($_POST['username']) and isset($_POST['password'])){
-        $username = $_POST['username'];
-        $password = $_POST['password'];
 
-        $query = "SELECT * FROM users WHERE username='$username' and password ='$password'";
-        $result = mysqli_query($db, $query) or die(mysqli_error($db));
-        $count = mysqli_num_rows($result);
 
-        if($count == 1){
-            $_SESSION['username'] = $username;
-        } else {
-            $fmsg = "ОШИБКА!!!";
-        }
-    }
-    if(isset($_SESSION['username'])){
-        $username = $_SESSION['username'];
-        echo "Hello, " . $username . "!";
-        echo "Login successful!";
-        echo "<a href='logout.php' class='btn btn-lg btn-primary btn-block'> Logout </a>";
-                
-    }
-?>
     </body>
 </html>

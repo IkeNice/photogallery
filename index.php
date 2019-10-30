@@ -12,7 +12,6 @@
     $dir = 'img/small/';
     $bdir = 'img/big/';
     // $images = get_images($dir); 
-   
     // $images = get_images_db($gallery, $start_pos, $perpage);
     $images = get_all_images_db($gallery, $start_pos, $perpage);
 
