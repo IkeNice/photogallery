@@ -25,8 +25,8 @@
 </head>
 
 <body background="main_bg.jpg">
-    
-<header>
+<?php include "header.php"; ?>
+<!-- <header>
     <ul>
         <li class="cursoron"><a>Welcome to my Gallery!</a></li>
         <li style="float:right"><a href="logout.php">Logout</a></li>
@@ -35,7 +35,7 @@
         <li style="float:right"><a href="">Admin</a></li>
         <li style="float:right"><a href="<?=SITE?>" class="active">Home</a></li>
     </ul>
-</header>
+</header> -->
 
     <!-- <h1 align="center">Welcome to my Gallery!</h1> -->
 

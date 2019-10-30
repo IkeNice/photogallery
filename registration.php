@@ -5,8 +5,11 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="css/loginstyle.css">
+        <link rel="stylesheet" type="text/css" href="<?=SITE?>css/style.css">
+    <!-- <link rel="stylesheet" href="<?=SITE?>css/lightbox.css"> -->
     </head>
 <body background="main_bg.jpg">
+<?php include "header.php"; ?>
 <?php
     require_once 'config.php';
     if(isset($_POST['user_login']) && isset($_POST['user_password'])){
@@ -52,7 +55,7 @@
 
                 <div>
                     <input type="submit" value="Register" />
-                    <a href="<?=SITE?>">Return home</a>
+                    <!-- <a href="<?=SITE?>">Return home</a> -->
                     <a href="login.php" class="log">Login</a>
                 </div>
                 

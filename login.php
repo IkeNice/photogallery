@@ -32,9 +32,12 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="css/loginstyle.css">
+        <link rel="stylesheet" type="text/css" href="<?=SITE?>css/style.css">
+    <!-- <link rel="stylesheet" href="<?=SITE?>css/lightbox.css"> -->
 </head>
-<body background="main_bg.jpg">
 
+<body background="main_bg.jpg">
+<?php include "header.php"; ?>
     <!-- <div class="container">
         <form action="<?=SITE?>" class="form-singin" method="POST">
             <h2>Login</h2>
@@ -63,7 +66,7 @@
                 </div>
                 <div>
                     <input type="submit" value="Log in" />
-                    <a href="<?=SITE?>">Return home</a>
+                    <!-- <a href="<?=SITE?>">Return home</a> -->
                     <a href="registration.php">Register</a>
                 </div>
             </form>	
