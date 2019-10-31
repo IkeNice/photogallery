@@ -72,12 +72,17 @@ li a {
 
 li a:hover:not(.active) {
     background-color: #111;
+    color: white;
 }
-  
 .active {
     background-color: #4CAF50;
+    color: white;
+}
+.active:hover {
+    color: white;
 }
 /*==============================*/
+/*========== MAIN PAGE ==========*/
 .category-wrap {
     margin:20px 100px auto 100px;
     padding: 15px;
@@ -195,6 +200,7 @@ li a:hover:not(.active) {
 .clear{
     clear: both;
 }
+/*==========================*/
 /* Pagination */
 .pagination{
     margin: 20px;

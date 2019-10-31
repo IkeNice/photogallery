@@ -34,7 +34,10 @@ h1,h2,h3,h4,h5,h6{ color:#563D64;}
 small{ font-size:10px;}
 b, strong{ font-weight:bold;}
 a{ text-decoration: none; }
-a:hover{ text-decoration: underline; }
+a:hover{ 
+	text-decoration: none; 
+}
+
 .left { float:left; }
 .right { float:right; }
 .alignleft { float: left; margin-right: 15px; }
@@ -161,12 +164,13 @@ form:after {
 	background: linear-gradient(top,  rgba(254,193,81,1) 0%,rgba(254,231,154,1) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fec151', endColorstr='#fee79a',GradientType=0 );
 }
+
 #content form div a {
 	color: #004a80;
     float: right;
-    font-size: 12px;
+    font-size: 15px;
     margin: 30px 15px 0 0;
-    text-decoration: underline;
+	text-decoration: underline;
 }
 .button {
 	background: rgb(247,249,250);
