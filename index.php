@@ -22,6 +22,7 @@
     <title>Gallery</title>
     <link rel="stylesheet" type="text/css" href="<?=SITE?>css/style.css">
     <link rel="stylesheet" href="<?=SITE?>css/lightbox.css">
+ 
 </head>
 
 <body background="main_bg.jpg">
@@ -116,5 +117,8 @@
 <script src="<?=SITE?>js/lightbox.min.js"></script>
 <script>var gallery = <?=$gallery?>;</script>
 <script src="js/script.js"></script>
+
+<?php include "footer.php"; ?>
 </body>
+
 </html>

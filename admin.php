@@ -3,7 +3,7 @@
     include 'config.php';
     include 'functions.php';
     if (isset ($_POST['btnDelete'])){
-		del();
+		deleteUser();
 	}
 ?>
 <!doctype html>
@@ -20,7 +20,7 @@
 <div class="block">
     <form name="first_f" method="post" action="admin.php">   
         <?php $query = "SELECT * FROM users" ;?>        
-        <?php $result=mysqli_query($db, $query);?>          
+        <?php $result = mysqli_query($db, $query);?>          
         <table cellspacing="2" cellpadding="5" >
             <caption>Таблица зарегистрированных пользователей сайта</caption>
             <tr>
@@ -38,7 +38,6 @@
                     <td contenteditable="false" align="center"> <?php echo ($row['user_login']) ?> </td>
                     <td contenteditable="false" align="center"><?php echo ($row['email']) ?></td>
                     <td contenteditable="false" align="center"> <?php echo ($row['user_password']) ?> </td>
-                    <td> <?php echo "Таблица пуста!" ?> </td>
                 <?php }?>
 
                 <?php if($row['id'] != 0) {?>
@@ -66,5 +65,6 @@
     </form>
 
 </div>
+<?php include "footer.php"; ?>
 </body>
 </html>

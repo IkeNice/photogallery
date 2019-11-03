@@ -38,18 +38,6 @@
 
 <body background="main_bg.jpg">
 <?php include "header.php"; ?>
-    <!-- <div class="container">
-        <form action="<?=SITE?>" class="form-singin" method="POST">
-            <h2>Login</h2>
-            
-            <input type="text" name="username" class="form-control" placeholder="Username" required>
-            <input type="password" name="password" class="form-control" placeholder="Passsword" required>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-            <a href="registration.php" class="btn btn-lg btn-primary btn-block">Register</a>
-            <a href="<?=SITE?>" class="btn btn-lg btn-primary btn-block">Return Home</a>
-                
-        </form>
-    </div> -->
 
     <div class="container">
         <section id="content">
@@ -66,14 +54,10 @@
                 </div>
                 <div>
                     <input type="submit" value="Log in" />
-                    <!-- <a href="<?=SITE?>">Return home</a> -->
                     <a href="registration.php">Register</a>
                 </div>
             </form>	
         </section>
     </div>
-
-
-
-    </body>
+</body>     
 </html>

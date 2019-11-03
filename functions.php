@@ -135,7 +135,6 @@ function pagination($page, $count_pages, $modrew = false){
 		$query = "SELECT COUNT(*) FROM images ";
 		$res = mysqli_query($db, $query);
 		$row = mysqli_fetch_row($res);
-		// print_r($row);
 		return $row[0];
 	}	
 	  
@@ -150,9 +149,8 @@ function pagination($page, $count_pages, $modrew = false){
 		return $users;
 	}
 
-	function del(){
-		require "config.php";
-		// global $db;
+	function deleteUser(){
+		global $db;
 		$data_id = join(', ', $_POST['check']);
 		$query = 'DELETE FROM `users` WHERE id IN ('.$data_id.')';
     	$delete = mysqli_query($db,$query);
