@@ -137,5 +137,25 @@ function pagination($page, $count_pages, $modrew = false){
 		$row = mysqli_fetch_row($res);
 		// print_r($row);
 		return $row[0];
-  	}	
+	}	
+	  
+	function get_users(){
+		global $db;
+		$query = "SELECT user_login, user_password FROM users";
+		$res = mysqli_query($db, $query);
+		$users = array();
+		while($row = mysqli_fetch_assoc($res)){
+			$users[$row['user_login']] = $row;
+		}
+		return $users;
+	}
+
+	function del(){
+		require "config.php";
+		// global $db;
+		$data_id = join(', ', $_POST['check']);
+		$query = 'DELETE FROM `users` WHERE id IN ('.$data_id.')';
+    	$delete = mysqli_query($db,$query);
+ 	}
+
 ?>

@@ -42,12 +42,12 @@ q:before, q:after {
 	content: '';
 	content: none;
 }
-table {
+/* table {
 	border-collapse: collapse;
 	border-spacing: 0;
-}
+} */
 
-/*========== HEADER ==========*/
+/*============ HEADER ============*/
 ul {
     list-style-type: none;
     margin: 0;
@@ -81,8 +81,8 @@ li a:hover:not(.active) {
 .active:hover {
     color: white;
 }
-/*==============================*/
-/*========== MAIN PAGE ==========*/
+/*================================*/
+/*========== MAIN PAGE ===========*/
 .category-wrap {
     margin:20px 100px auto 100px;
     padding: 15px;
@@ -200,7 +200,7 @@ li a:hover:not(.active) {
 .clear{
     clear: both;
 }
-/*==========================*/
+/*================================*/
 /* Pagination */
 .pagination{
     margin: 20px;
@@ -234,3 +234,20 @@ li a:hover:not(.active) {
     color: #fff;
     border-color: #428bca;
    }
+/*========== ADMIN PAGE ==========*/
+table{
+    width: 100px; /* Ширина таблицы */
+    border-collapse: collapse; /* Убираем двойные линии между ячейками */
+    margin: auto;
+}
+caption{
+    font-size: 23px;
+}
+td, th {
+    padding: 3px; /* Поля вокруг содержимого таблицы */
+    border: 1px solid black; /* Параметры рамки */
+}
+th {
+    background: #b0e0e6; /* Цвет фона */
+}
+/*================================*/
