@@ -2,9 +2,16 @@
     include 'check_admin.php';
     include 'config.php';
     include 'functions.php';
-    if (isset ($_POST['btnDelete'])){
+    if (isset ($_POST['btnDeleteUser'])){
 		deleteUser();
-	}
+    }
+    // ВЫБОРКА ПОЛЬЗОВАТЕЛЕЙ
+    $queryUser = "SELECT * FROM users" ;       
+    $resultUser = mysqli_query($db, $queryUser);
+    // ВЫБОРКА КАРТИНОК
+    $queryImg = "SELECT * FROM images" ;       
+    $resultImg = mysqli_query($db, $queryImg);    
+
 ?>
 <!doctype html>
 <html>
@@ -19,9 +26,8 @@
 
 <div class="block">
     <form name="first_f" method="post" action="admin.php">   
-        <?php $query = "SELECT * FROM users" ;?>        
-        <?php $result = mysqli_query($db, $query);?>          
-        <table cellspacing="2" cellpadding="5" >
+        <!-- Таблица зарегистрированных пользователей -->
+        <table cellspacing="2" cellpadding="5" class="tableUser">
             <caption>Таблица зарегистрированных пользователей сайта</caption>
             <tr>
                 <th>ID Пользователя</th>
@@ -30,22 +36,22 @@
                 <th>Пароль Пользователя</th>
                 <th></th>
             </tr>
-            <?php while($row = mysqli_fetch_assoc($result)) { ?>
+            <?php while($rowUser = mysqli_fetch_assoc($resultUser)) { ?>
                 <tr>
 
-                <?php if($row['id'] == 0) {?>
-                    <td contenteditable="false" align="center"> <?php echo ($row['id']) ?> </td>
-                    <td contenteditable="false" align="center"> <?php echo ($row['user_login']) ?> </td>
-                    <td contenteditable="false" align="center"><?php echo ($row['email']) ?></td>
-                    <td contenteditable="false" align="center"> <?php echo ($row['user_password']) ?> </td>
+                <?php if($rowUser['id'] == 0) {?>
+                    <td contenteditable="false" align="center"> <?php echo ($rowUser['id']) ?> </td>
+                    <td contenteditable="false" align="center"> <?php echo ($rowUser['user_login']) ?> </td>
+                    <td contenteditable="false" align="center"><?php echo ($rowUser['email']) ?></td>
+                    <td contenteditable="false" align="center"> <?php echo ($rowUser['user_password']) ?> </td>
                 <?php }?>
 
-                <?php if($row['id'] != 0) {?>
-                    <td contenteditable="false" align="center"> <?php echo ($row['id']);?> </td>
-                    <td contenteditable="false" align="center"><?php echo ($row['user_login']) ?></td>
-                    <td contenteditable="false" align="center"><?php echo ($row['email']) ?></td>
-                    <td contenteditable="false" align="center"><?php echo ($row['user_password']) ?></td>
-                    <td> <input type='checkbox' class='style_checkbox' name="check[]" value="<?php echo ($row['id']) ?>">  </td>
+                <?php if($rowUser['id'] != 0) {?>
+                    <td contenteditable="false" align="center"> <?php echo ($rowUser['id']);?> </td>
+                    <td contenteditable="false" align="center"><?php echo ($rowUser['user_login']) ?></td>
+                    <td contenteditable="false" align="center"><?php echo ($rowUser['email']) ?></td>
+                    <td contenteditable="false" align="center"><?php echo ($rowUser['user_password']) ?></td>
+                    <td> <input type='checkbox' class='style_checkbox' name="check[]" value="<?php echo ($rowUser['id']) ?>">  </td>
                 <?php }?>
                 </tr>
 
@@ -56,15 +62,60 @@
                 <th></th>
                 <th>
                     <br>
-                    <input type="submit" name="btnDelete" value="Удалить пользователя" />
+                    <input type="submit" name="btnDeleteUser" value="Удалить пользователя" />
                     <br> 
                     <br>  
                 </th> 
+                <th></th>
             </tr>
         </table>
+        <!-- [] -->
+        <!-- Таблица картинок -->
+        <table cellspacing="2" cellpadding="5" class="tableImg">
+            <caption>Таблица картинок</caption>
+            <tr>
+                <th>ID картинки</th>
+                <th>ID галереи</th>
+                <th>Название картинки</th>
+                <th>Описание картинки</th>
+                <th></th>
+            </tr>
+            <?php while($rowImg = mysqli_fetch_assoc($resultImg)) { ?>
+                <tr>
+
+                <?php if($rowImg['id'] == 0) {?>
+                    <td contenteditable="false" align="center"> <?php echo ($rowImg['id']) ?> </td>
+                    <td contenteditable="false" align="center"> <?php echo ($rowImg['gallery_id']) ?> </td>
+                    <td contenteditable="false" align="center"><?php echo ($rowImg['img']) ?></td>
+                    <td contenteditable="false" align="center"> <?php echo ($rowImg['description']) ?> </td>
+                <?php }?>
+
+                <?php if($rowImg['id'] != 0) {?>
+                    <td contenteditable="false" align="center"> <?php echo ($rowImg['id']);?> </td>
+                    <td contenteditable="false" align="center"><?php echo ($rowImg['gallery_id']) ?></td>
+                    <td contenteditable="false" align="center"><?php echo ($rowImg['img']) ?></td>
+                    <td contenteditable="false" align="center"><?php echo ($rowImg['description']) ?></td>
+                    <td> <input type='checkbox' class='style_checkbox' name="check[]" value="<?php echo ($rowImg['id']) ?>">  </td>
+                <?php }?>
+                </tr>
+
+            <?php }?>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>
+                    <br>
+                    <input type="submit" name="btnDeleteImg" value="Удалить картинку" />
+                    <br> 
+                    <br>  
+                </th> 
+                <th></th>
+            </tr>
+        </table>
+        <!-- [] -->
     </form>
 
 </div>
-<?php include "footer.php"; ?>
 </body>
 </html>

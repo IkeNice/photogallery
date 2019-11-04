@@ -7,7 +7,6 @@
         <li class="cursoron"><a>Welcome to my Gallery!</a></li>
         <li style="float:right"><a href="logout.php">Logout</a></li>
         <li style="float:right"><a href="login.php">Login</a></li>
-        <!-- <li style="float:right"><a href="">About</a></li> -->
         <li style="float:right"><a href="admin.php">Admin</a></li>
         <li style="float:right"><a href="<?=SITE?>" class="active">Home</a></li>
     </ul>

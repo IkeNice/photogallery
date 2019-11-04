@@ -137,7 +137,7 @@ function pagination($page, $count_pages, $modrew = false){
 		$row = mysqli_fetch_row($res);
 		return $row[0];
 	}	
-	  
+	// ПОЛУЧЕНИЕ ВСЕХ ПОЛЬЗОВАТЕЛЕЙ ИЗ БД  
 	function get_users(){
 		global $db;
 		$query = "SELECT user_login, user_password FROM users";
@@ -148,12 +148,18 @@ function pagination($page, $count_pages, $modrew = false){
 		}
 		return $users;
 	}
-
+	// УДАЛЕНИЕ ПОЛЬЗОВАТЕЛЯ ИЗ БД
 	function deleteUser(){
 		global $db;
-		$data_id = join(', ', $_POST['check']);
-		$query = 'DELETE FROM `users` WHERE id IN ('.$data_id.')';
+		$user_id = join(', ', $_POST['check']);
+		$query = 'DELETE FROM `users` WHERE id IN ('.$user_id.')';
     	$delete = mysqli_query($db,$query);
  	}
-
+	// УДАЛЕНИЕ КАРТИНОК ИЗ БД
+	function deleteImg(){
+		global $db;
+		$img_id = join(', ', $_POST['check']);
+		$query = 'DELETE FROM `images` WHERE id IN ('.$img_id.')';
+    	$delete = mysqli_query($db,$query);
+ 	}
 ?>
