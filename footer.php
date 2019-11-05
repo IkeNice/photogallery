@@ -1,8 +1,5 @@
-
-<head>
-<link rel="stylesheet" href="fontawesome-free-5.11.2-web/css/all.css">
 <link rel="stylesheet" href="css/footer.css">
-</head>
+<script src="https://kit.fontawesome.com/ef57681e72.js" crossorigin="anonymous"></script>
 <footer class="social-footer">
 
   <div class="social-footer-icons">

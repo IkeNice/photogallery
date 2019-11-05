@@ -22,7 +22,7 @@
     <title>Gallery</title>
     <link rel="stylesheet" type="text/css" href="<?=SITE?>css/style.css">
     <link rel="stylesheet" href="<?=SITE?>css/lightbox.css">
- 
+    <!-- <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet"> -->
 </head>
 
 <body background="main_bg.jpg">
