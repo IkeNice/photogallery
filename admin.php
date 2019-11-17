@@ -2,8 +2,13 @@
     include 'check_admin.php';
     include 'config.php';
     include 'functions.php';
+    // удаление пользователей
     if (isset ($_POST['btnDeleteUser'])){
 		deleteUser();
+    }
+    // удаление картинок 
+    if (isset ($_POST['btnDeleteImg'])){
+		deleteImg();
     }
     // ВЫБОРКА ПОЛЬЗОВАТЕЛЕЙ
     $queryUser = "SELECT * FROM users" ;       
@@ -11,7 +16,6 @@
     // ВЫБОРКА КАРТИНОК
     $queryImg = "SELECT * FROM images" ;       
     $resultImg = mysqli_query($db, $queryImg);    
-
 ?>
 <!doctype html>
 <html>
