@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   $errors['year'] = !empty($_COOKIE['year_error']);
   $errors['gender'] = !empty($_COOKIE['gender_error']);
   $errors['limb'] = !empty($_COOKIE['limb_error']);
-  $errors['power'] = !empty($_COOKIE['power_error']);
+  $errors['power[]'] = !empty($_COOKIE['power_error[]']);
   $errors['bio'] = !empty($_COOKIE['bio_error']);
   $errors['contact'] = !empty($_COOKIE['contact_error']);
   // TODO: аналогично все поля.
@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $messages[] = '<div class="error">Выберите количество конечностей!</div>';
   }
 
-  if ($errors['power']) {
+  if ($errors['power[]']) {
     setcookie('power_error', '', 1);
     $messages[] = '<div class="error">Выберите сверхспособность!</div>';
   }
@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   $values['year'] = empty($_COOKIE['year_value']) ? '' : $_COOKIE['year_value'];
   $values['gender'] = empty($_COOKIE['gender_value']) ? '' : $_COOKIE['gender_value'];
   $values['limb'] = empty($_COOKIE['limb_value']) ? '' : $_COOKIE['limb_value'];
-  $values['power'] = empty($_COOKIE['power_value']) ? '' : $_COOKIE['power_value'];
+  $values['power[]'] = empty($_COOKIE['power_value[]']) ? '' : $_COOKIE['power_value[]'];
   $values['bio'] = empty($_COOKIE['bio_value']) ? '' : $_COOKIE['bio_value'];
   // TODO: аналогично все поля.
 
@@ -134,11 +134,11 @@ else {
     setcookie('limb_value', $_POST['limb'], time() + 60);
   }
 
-  if (!$_POST['power']) {
-    setcookie('power_error', '1', time() + 60);
+  if (!$_POST['power[]']) {
+    setcookie('power_error[]', '1', time() + 60);
     $errors = TRUE;
   } else {
-    setcookie('power_value', $_POST['power'], time() + 60);
+    setcookie('power_value[]', $_POST['power[]'], time() + 60);
   }
 
   if (empty($_POST['bio'])) {
@@ -168,7 +168,7 @@ else {
     setcookie('year_error', '', 1);
     setcookie('gender_error', '', 1);
     setcookie('limb_error', '', 1);
-    setcookie('power_error', '', 1);
+    setcookie('power_error[]', '', 1);
     setcookie('bio_error', '', 1);
     setcookie('contact_error', '', 1);
     // TODO: тут необходимо удалить остальные Cookies.

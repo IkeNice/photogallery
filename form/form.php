@@ -6,9 +6,12 @@
   border: 2px solid red;
 }
     </style>
+  <link rel="stylesheet" href="../css/loginstyle.css">
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
   </head>
-  <body>
 
+  <body background="../main_bg.jpg">
+  <?php include "../header.php"; ?>
 <?php
 if (!empty($messages)) {
   print('<div id="messages">');
@@ -22,7 +25,12 @@ if (!empty($messages)) {
 // Далее выводим форму отмечая элементы с ошибками классом error
 // и задавая начальные значения элементов ранее сохраненными.
 ?>
-    <!-- ВЫВОД ОШИБОК РЯДОМ С ПОЛЕМ -->
+
+<div class="container">
+<section id="content">
+
+
+    <!-- СДЕЛАТЬ ВЫВОД ОШИБОК РЯДОМ С ПОЛЕМ -->
     <form action="" method="POST">
 
       <label> Ваше имя:
@@ -76,11 +84,13 @@ if (!empty($messages)) {
 
       <label>Сверхспособность:
         <br>
-        <select name="power[]" multiple="multiple" <?php if ($errors['power']) {print 'class="error"';} ?>>
-          <option value="p1">Бессмертие</option>
-          <option value="p2">Прохождение сквозь стены</option>
-          <option value="p3">Левитация</option>
-        </select>
+        <div>
+          <select name="power[]" multiple="multiple" <?php if ($errors['power']) {print 'class="error"';} ?>>
+            <option value="p1">Бессмертие</option>
+            <option value="p2">Прохождение сквозь стены</option>
+            <option value="p3">Левитация</option>
+          </select>
+        </div>    
       </label>
       <br>
       <br>
@@ -99,5 +109,7 @@ if (!empty($messages)) {
 
       <input type="submit" value="Отправить" />
     </form>
+    </section>
+    </div>
   </body>
 </html>
