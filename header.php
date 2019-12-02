@@ -5,7 +5,7 @@
 <header>
     <ul>
         <li class="cursoron"><a>Welcome to my Gallery!</a></li>
-        <li style="float:right"><a href="form/index.php">Form</a></li>
+        <!-- <li style="float:right"><a href="form/index.php">Form</a></li> -->
         <li style="float:right"><a href="logout.php">Logout</a></li>
         <li style="float:right"><a href="login.php">Login</a></li>
         <li style="float:right"><a href="admin.php">Admin</a></li>

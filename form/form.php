@@ -6,7 +6,7 @@
   border: 2px solid red;
 }
     </style>
-  <link rel="stylesheet" href="../css/loginstyle.css">
+  <link rel="stylesheet" href="../css/formstyle.css">
   <link rel="stylesheet" type="text/css" href="../css/style.css">
   </head>
 
@@ -103,7 +103,7 @@ if (!empty($messages)) {
       <br>
       <br>
 
-      <label><input type="checkbox" name="contact" <?php if ($errors['power']) {print 'class="error"';} ?>/>С контактом ознакомлен</label>
+      <label><input type="checkbox" name="contact" <?php if ($errors['contact']) {print 'class="error"';} ?>/>С контактом ознакомлен</label>
       <br>
       <br>
 

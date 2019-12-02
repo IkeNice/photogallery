@@ -1,185 +1,101 @@
 <?php
-/**
- * Интернет-программирование. Задача 12.
- * Реализовать проверку заполнения обязательных полей формы в задаче 7
- * с использованием Cookies, а также заполнение формы по умолчанию ранее
- * введенными значениями.
- */
+header('Content-Type: text/html; charset=utf-8');
 
-// Отправляем браузеру правильную кодировку,
-// файл index.php должен быть в кодировке UTF-8 без BOM.
-header('Content-Type: text/html; charset=UTF-8');
-
-// В суперглобальном массиве $_SERVER PHP сохраняет некторые заголовки запроса HTTP
-// и другие сведения о клиненте и сервере, например метод текущего запроса $_SERVER['REQUEST_METHOD'].
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-  // Массив для временного хранения сообщений пользователю.
-  $messages = array();
+    $messages = array();
+    if (!empty($_COOKIE['save'])) {
+        setcookie('save', '', 1000000);
+        array_push($messages, 'Спасибо, результаты сохранены');
+    }
 
-  // В суперглобальном массиве $_COOKIE PHP хранит все имена и значения куки текущего запроса.
-  // Выдаем сообщение об успешном сохранении.
-  if (!empty($_COOKIE['save'])) {
-    // Удаляем куку, указывая время устаревания в прошлом.
-    setcookie('save', '', 100000);
-    // Если есть параметр save, то выводим сообщение пользователю.
-    $messages[] = 'Спасибо, результаты сохранены.';
-  }
+    $values = array(
+        'name' => empty($_COOKIE['form_name']) ? '' : $_COOKIE['form_name'],
+        'email' => empty($_COOKIE['form_email']) ? '' : $_COOKIE['form_email'],
+        'age' => empty($_COOKIE['form_age']) ? '' : $_COOKIE['form_age'],
+        'bio' => empty($_COOKIE['form_bio']) ? '' : $_COOKIE['form_bio']
+    );
 
-  // Складываем признак ошибок в массив.
-  $errors = array();
-  $errors['name'] = !empty($_COOKIE['name_error']);
-  $errors['email'] = !empty($_COOKIE['email_error']);
-  $errors['year'] = !empty($_COOKIE['year_error']);
-  $errors['gender'] = !empty($_COOKIE['gender_error']);
-  $errors['limb'] = !empty($_COOKIE['limb_error']);
-  $errors['power[]'] = !empty($_COOKIE['power_error[]']);
-  $errors['bio'] = !empty($_COOKIE['bio_error']);
-  $errors['contact'] = !empty($_COOKIE['contact_error']);
-  // TODO: аналогично все поля.
+    setcookie('form_name', '', 1);
+    setcookie('form_email', '', 1);
+    setcookie('form_bio', '', 1);
 
-  // Выдаем сообщения об ошибках.
-  if ($errors['name']) {
-    setcookie('name_error', '', 1);
-    $messages[] = '<div class="error">Заполните имя!</div>';
-  }
+    $errors = array(
+        'name' => empty($_COOKIE['error_name']) ? '' : $_COOKIE['error_name'],
+        'email' => empty($_COOKIE['error_email']) ? '' : $_COOKIE['error_email'],
+        'age' => empty($_COOKIE['error_age']) ? '' : $_COOKIE['error_age'],
+        'bio' => empty($_COOKIE['error_bio']) ? '' : $_COOKIE['error_bio'],
+        'contract' => empty($_COOKIE['error_contract']) ? '' : $_COOKIE['error_contract']
+    );
 
-  if ($errors['email']) {
-    setcookie('email_error', '', 1);
-    $messages[] = '<div class="error">Заполните e-mail!</div>';
-  }
+    setcookie('error_name', '', 1);
+    setcookie('error_email', '', 1);
+    setcookie('error_age', '', 1);
+    setcookie('error_bio', '', 1);
+    setcookie('error_contract', '', 1);
 
-  if ($errors['year']) {
-    setcookie('year_error', '', 1);
-    $messages[] = '<div class="error">Выберите год рождения!</div>';
-  }
+    include(__DIR__ . '/form.php');
+} else {
+    $errors = FALSE;
+    if (empty($_POST['name'])) {
+        setcookie('error_name', 'Введите свое имя', time() + 60 * 60);
+        $errors = TRUE;
+    } else {
+        setcookie('form_name', $_POST['name'], time() + 60 * 60);
+    }
 
-  if ($errors['gender']) {
-    setcookie('gender_error', '', 1);
-    $messages[] = '<div class="error">Выберите пол!</div>';
-  }
+    if (empty($_POST['email'])) {
+        setcookie('error_email', 'Введите свой адрес электронной почты', time() + 60 * 60);
+        $errors = TRUE;
+    } else {
+        setcookie('form_email', $_POST['email'], time() + 60 * 60);
+    }
 
-  if ($errors['limb']) {
-    setcookie('limb_error', '', 1);
-    $messages[] = '<div class="error">Выберите количество конечностей!</div>';
-  }
+    if ($_POST['age'] == 0) {
+        setcookie('error_age', 'Укажите Ваш возраст', time() + 60 * 60);
+        $errors = TRUE;
+    } else {
+        setcookie('form_age', $_POST['age'], time() + 60 * 60);
+    }
 
-  if ($errors['power[]']) {
-    setcookie('power_error', '', 1);
-    $messages[] = '<div class="error">Выберите сверхспособность!</div>';
-  }
+    if (empty($_POST['bio'])) {
+        setcookie('error_bio', 'Введите свою биографию', time() + 60 * 60);
+        $errors = TRUE;
+    } else {
+        setcookie('form_bio', $_POST['bio'], time() + 60 * 60);
+    }
 
-  if ($errors['bio']) {
-    setcookie('bio_error', '', 1);
-    $messages[] = '<div class="error">Введите биографию!</div>';
-  }
+    if (!isset($_POST['contract'])) {
+        setcookie('error_contract', 'Вы не ознакомились с контактом', time() + 60 * 60);
+        $errors = TRUE;
+    }
 
-  if ($errors['contact']) {
-    setcookie('contact_error', '', 1);
-    $messages[] = '<div class="error">Вы не ознакомились с контактом!</div>';
-  }
-  // TODO: тут выдать сообщения об ошибках в других полях.
+    if (!$errors) {
+        $xml = new SimpleXMLElement('<document/>');
+        $child = $xml->AddChild('name', $_POST['name']);
+        $child = $xml->AddChild('email', $_POST['email']);
+        $child = $xml->AddChild('age', $_POST['age']);
+        $child = $xml->AddChild('gender', $_POST['gender']);
 
-  // Складываем предыдущие значения полей в массив, если есть.
-  $values = array();
-  $values['name'] = empty($_COOKIE['name_value']) ? '' : $_COOKIE['name_value'];
-  $values['email'] = empty($_COOKIE['email_value']) ? '' : $_COOKIE['email_value'];
-  $values['year'] = empty($_COOKIE['year_value']) ? '' : $_COOKIE['year_value'];
-  $values['gender'] = empty($_COOKIE['gender_value']) ? '' : $_COOKIE['gender_value'];
-  $values['limb'] = empty($_COOKIE['limb_value']) ? '' : $_COOKIE['limb_value'];
-  $values['power[]'] = empty($_COOKIE['power_value[]']) ? '' : $_COOKIE['power_value[]'];
-  $values['bio'] = empty($_COOKIE['bio_value']) ? '' : $_COOKIE['bio_value'];
-  // TODO: аналогично все поля.
+        if (!empty($_POST['power'])) {
+            $sp = $xml->AddChild('power');
+            foreach ($_POST['power'] as $power) {
+                $sp->AddChild($power, 'yes');
+            }
+        }
 
-  // Включаем содержимое файла form.php.
-  // В нем будут доступны переменные $messages, $errors и $values для вывода 
-  // сообщений, полей с ранее заполненными данными и признаками ошибок.
-  include('form.php');
-}
-// Иначе, если запрос был методом POST, т.е. нужно проверить данные и сохранить их в XML-файл.
-else {
-  // Проверяем ошибки.
-  $errors = FALSE;
-  if (empty($_POST['name'])) {
-    setcookie('name_error', '1', time() + 60);
-    $errors = TRUE;
-  } else {
-    setcookie('name_value', $_POST['name'], time() + 60);
-  }
+        $child = $xml->AddChild('Quantity', $_POST['Quantity']);
+        $child = $xml->AddChild('bio', $_POST['bio']);
 
-  if (empty($_POST['email'])) {
-    setcookie('email_error', '1', time() + 60);
-    $errors = TRUE;
-  } else {
-    setcookie('email_value', $_POST['email'], time() + 60);
-  }
 
-  if ($_POST['year']==0) {
-    setcookie('year_error', '1', time() + 60);
-    $errors = TRUE;
-  } else {
-    setcookie('year_value', $_POST['year'], time() + 60);
-  }
+        $files_dir = $_SERVER['DOCUMENT_ROOT'] . '/list/';
+        $file = $files_dir . uniqid() . '.xml';
+        $content = $xml->AsXML();
 
-  if (!$_POST['gender']) {
-    setcookie('gender_error', '1', time() + 60);
-    $errors = TRUE;
-  } else {
-    setcookie('gender_value', $_POST['gender'], time() + 60);
-  }
+        setcookie('save', '1');
 
-  if (!$_POST['limb']) {
-    setcookie('limb_error', '1', time() + 60);
-    $errors = TRUE;
-  } else {
-    setcookie('limb_value', $_POST['limb'], time() + 60);
-  }
+        file_put_contents($file, $content);
+    }
 
-  if (!$_POST['power[]']) {
-    setcookie('power_error[]', '1', time() + 60);
-    $errors = TRUE;
-  } else {
-    setcookie('power_value[]', $_POST['power[]'], time() + 60);
-  }
-
-  if (empty($_POST['bio'])) {
-    setcookie('bio_error', '1', time() + 60);
-    $errors = TRUE;
-  } else {
-    setcookie('bio_value', $_POST['bio'], time() + 60);
-  }
-
-  if (!isset($_POST['contact'])) {
-    setcookie('error_contact', 'Вы не ознакомились с контактом', time() + 60);
-    $errors = TRUE;
-}
-// *************
-// TODO: тут необходимо проверить правильность заполнения всех остальных полей.
-// Сохранить в Cookie признаки ошибок и значения полей.
-// *************
-
-  if ($errors) {
-    // При наличии ошибок перезагружаем страницу и завершаем работу скрипта.
     header('Location: index.php');
-    exit();
-  } else {
-    // Удаляем Cookies с признаками ошибок.
-    setcookie('name_error', '', 1);
-    setcookie('email_error', '', 1);
-    setcookie('year_error', '', 1);
-    setcookie('gender_error', '', 1);
-    setcookie('limb_error', '', 1);
-    setcookie('power_error[]', '', 1);
-    setcookie('bio_error', '', 1);
-    setcookie('contact_error', '', 1);
-    // TODO: тут необходимо удалить остальные Cookies.
-  }
 
-  // Сохранение в XML-документ.
-  // ...
-
-  // Сохраняем куку с признаком успешного сохранения.
-  setcookie('save', '1');
-
-  // Делаем перенаправление.
-  header('Location: index.php');
 }
